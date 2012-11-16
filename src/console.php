@@ -18,5 +18,18 @@ $console
         // do something
     })
 ;
-
+$console->register('route-list')
+	->setDefinition(array())
+	->setDescription('prepare application to run')
+	->setCode(function(InputInterface $input, OutputInterface $output) use ($app){
+	include_once __DIR__ . '/controllers.php';
+	//freeze the controllers and add the resulting
+	$app['routes']->addCollection($app['controllers']->flush());
+	$pattern = $app['routes']->all();
+	$output->getFormatter()->setStyle('routeName', new \Symfony\Component\Console\Formatter\OutputFormatterStyle('red'));
+	$output->getFormatter()->setStyle('pattern', new \Symfony\Component\Console\Formatter\OutputFormatterStyle('yellow'));
+	foreach($pattern as $routeName => $route){
+		$output->writeln('<routeName>'.$routeName . '</routeName>  => <pattern>' . $route->getPattern().'</pattern>');
+	}
+});
 return $console;
