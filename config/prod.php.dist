@@ -1,0 +1,17 @@
+<?php
+
+$app['consumer_key'] = '';
+$app['consumer_secret'] = '';
+$app['access_token'] = '';
+$app['access_token_secret'] = '';
+$app['db_name'] = '';
+$app['db_host'] = '';
+$app['db_user'] = '';
+$app['db_password'] = '';
+$app['bitly_login'] = '';
+$app['bitly_api_key'] = '';
+$app['eventCheckerConfiguration'] = array(
+    'bitly_login' => $app['bitly_login'],
+    'bitly_api_key' => $app['bitly_api_key'],
+    'debug' => true
+);

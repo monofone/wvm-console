@@ -6,8 +6,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-$console = new Application('My Silex Application', 'n/a');
-
+$console = new Application('WVM twitter console', 'n/a');
+/*
 $console
     ->register('my-command')
     ->setDefinition(array(
@@ -17,7 +17,7 @@ $console
     ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
         // do something
     })
-;
+;*/
 $console->register('route-list')
 	->setDefinition(array())
 	->setDescription('prepare application to run')
@@ -32,4 +32,15 @@ $console->register('route-list')
 		$output->writeln('<routeName>'.$routeName . '</routeName>  => <pattern>' . $route->getPattern().'</pattern>');
 	}
 });
+$console
+    ->register('check-events')
+    ->setDefinition(array(
+        // new InputOption('some-option', null, InputOption::VALUE_NONE, 'Some help'),
+    ))
+    ->setDescription('checks the event table and sends tweet if any')
+    ->setCode(function (InputInterface $input, OutputInterface $output) use ($app) {
+        $app['eventChecker']->sendTweets();
+
+    })
+;
 return $console;

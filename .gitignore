@@ -1,5 +1,6 @@
 /vendor/
 /cache/
+/config/prod.php
 silex.log
 composer.phar
 *.*~
