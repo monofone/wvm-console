@@ -51,9 +51,9 @@ class EventChecker
      * fetch events for next day
      */
     protected function fetchUpcomingEvents() {
-        $startDateMin = strtotime('yesterday');
-        $startdateMax = strtotime('tomorrow');
-        $result = $this->db->fetchAll('SELECT * FROM ' . $this->eventTable . ' WHERE startDate > ? AND startDate <= ?', array($startDateMin, $startdateMax));
+        $startDateMin = strtotime('tomorrow 0:00:00');
+        $startdateMax = strtotime('tomorrow 23:59:59');
+        $result = $this->db->fetchAll('SELECT * FROM ' . $this->eventTable . ' WHERE startDate >= ? AND startDate <= ?', array($startDateMin, $startdateMax));
 
         return $result;
     }
