@@ -53,7 +53,7 @@ class EventChecker
     protected function fetchUpcomingEvents() {
         $startDateMin = strtotime('tomorrow 0:00:00');
         $startdateMax = strtotime('tomorrow 23:59:59');
-        $result = $this->db->fetchAll('SELECT * FROM ' . $this->eventTable . ' WHERE startDate >= ? AND startDate <= ?', array($startDateMin, $startdateMax));
+        $result = $this->db->fetchAll('SELECT * FROM ' . $this->eventTable . ' WHERE publish_social = 1 AND startDate > ? AND startDate <= ?', array($startDateMin, $startdateMax));
 
         return $result;
     }

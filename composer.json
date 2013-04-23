@@ -19,7 +19,8 @@
         "symfony/twig-bridge": "2.1.*",
         "symfony/validator": "2.1.*",
         "dg/twitter-php": "dev-master",
-        "doctrine/dbal": "2.2.*"
+        "doctrine/dbal": "2.2.*",
+        "silex/web-profiler": "~1.0@dev"
     },
     "minimum-stability": "dev",
     "autoload": {
