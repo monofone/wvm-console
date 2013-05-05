@@ -23,6 +23,8 @@ $app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
 
                     return $twig;
                 }));
+$app->register($sc = new \Silex\Provider\ServiceControllerServiceProvider());
+
 $app->register($p = new Silex\Provider\WebProfilerServiceProvider(), array(
     'profiler.cache_dir' => __DIR__.'/../cache/profiler',
 ));
